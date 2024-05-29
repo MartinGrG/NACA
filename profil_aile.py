@@ -4,11 +4,17 @@ Fonction calculant les coordonnées (x_down,y_down) et (x_up,y_up)
 
 import numpy as np
 
-def profil_aile(corde, nb_points, epaisseur):
+
+def profil_aile(corde, nb_points, epaisseur, type):
     t = epaisseur/100   #Calcul du pourcentage de l'épaisseur maximale
+    if type == 'l':
+        x_c = np.linspace(0, 1, num=nb_points)  # Liste x_c debut: 0, fin: longueur corde, pas: corde/nb_points
+    else:
+        theta = np.linspace(0, 3.14, num=nb_points)
+        x_c = 1/2*(1-np.cos(theta))
+
     #Calcul des coordonnées
     #Abscisse
-    x_c = np.linspace(0,1,num=nb_points) #Liste x_c debut: 0, fin: longueur corde, pas: corde/nb_points
     x_up = x_c*corde
     x_down = x_up
     #Ordonnée

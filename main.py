@@ -9,11 +9,11 @@ from profil_aile import profil_aile
 
 #Demande d'information à l'utilisateur
 nom = input("Quelles sont les deux dernier chiffres du profil NACA00XX ? \n")  #Demande des 4 derniers chiffres
-eppaisseur = int(nom)                                                   #Transformation en int
-corde = int(input("Quelle est la longueur de la corde en mètre ? \n"))  #Demande de la corde
-nb_points = int(input("Donnez le nombre de point le long du tracé: \n"))#demande du nombre de points pour le tracé
-
-coordonnes = profil_aile(corde, nb_points, eppaisseur)  #Appel de la fonction profil_aile qui renvoit le tableau:
+eppaisseur = int(nom)                                                          #Transformation en int
+corde = int(input("Quelle est la longueur de la corde en mètre ? \n"))         #Demande de la corde
+nb_points = int(input("Donnez le nombre de point le long du tracé: \n"))       #Demande du nombre de points pour le tracé
+type = (input("Donnez le style de distribution linéaire ou non-linéaire: l ou nl  \n")) #Demande du style de distribution
+coordonnes = profil_aile(corde, nb_points, eppaisseur,type)  #Appel de la fonction profil_aile qui renvoit le tableau:
                                                         #[[x_down,y_down],[x_up,y_up]]
 #Affichage des résultats
 plt.plot(coordonnes[0,:,0],coordonnes[0,:,1],label='Intrados')  #Tracé de x_down et y_down
