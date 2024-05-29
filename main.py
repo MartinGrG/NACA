@@ -18,9 +18,9 @@ coordonnes = profil_aile(corde, nb_points, eppaisseur)  #Appel de la fonction pr
 #Affichage des résultats
 plt.plot(coordonnes[0,:,0],coordonnes[0,:,1],label='Intrados')  #Tracé de x_down et y_down
 plt.plot(coordonnes[1,:,0],coordonnes[1,:,1],label='Extrados')  #Tracé de x_upet y_up
-plt.xlabel('Corde [m]')
-plt.ylabel('Épaisseur [m]')
-plt.legend()
-plt.grid()
-plt.title(f"Profil d'aile NACA{nom}")
-plt.show()
+plt.xlabel('Corde [m]')                 #Ajout nom de l'abscisse
+plt.ylabel('Épaisseur [m]')             #Ajout nom de l'ordonnée
+plt.legend()                            #Ajout d'une légende
+plt.grid()                              #Ajout d'une grille en fond
+plt.title(f"Profil d'aile NACA{nom}")   #Ajout du titre
+plt.show()                              #Affichage du graph
