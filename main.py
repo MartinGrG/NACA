@@ -1,20 +1,22 @@
 """
-But du code:
-Afficher la courbe d'un profil NACA00XX symétrique
+Le but est d'afficher la courbe d'un profil NACA00XX symétrique
 """
 
 import matplotlib.pyplot as plt
 import numpy as np
 from profil_aile import profil_aile
+from test_input import test_input
 
 #Demande d'information à l'utilisateur
-nom = input("Quelles sont les deux dernier chiffres du profil NACA00XX ? \n")  #Demande des 4 derniers chiffres
+nom = test_input(input("Quelles sont les deux dernier chiffres du profil NACA00XX ? \n"), 1)  #Demande des 4 derniers chiffres
 eppaisseur = int(nom)                                                          #Transformation en int
-corde = int(input("Quelle est la longueur de la corde en mètre ? \n"))         #Demande de la corde
-nb_points = int(input("Donnez le nombre de point le long du tracé: \n"))       #Demande du nombre de points pour le tracé
-type = (input("Donnez le style de distribution linéaire ou non-linéaire: l ou nl  \n")) #Demande du style de distribution
+corde = float(test_input(input("Quelle est la longueur de la corde en mètre ? \n"), 2))         #Demande de la corde
+nb_points = int(test_input(input("Donnez le nombre de point le long du tracé: \n"), 3))       #Demande du nombre de points pour le tracé
+type = test_input(input("Donnez le style de distribution linéaire ou non-uniforme: l ou nu  \n"), 4) #Demande du style de distribution
+
+
 coordonnes = profil_aile(corde, nb_points, eppaisseur,type)  #Appel de la fonction profil_aile qui renvoit le tableau:
-                                                        #[[x_down,y_down],[x_up,y_up]]
+                                                             #[[x_down,y_down],[x_up,y_up]]
 #Affichage des résultats
 plt.plot(coordonnes[0,:,0],coordonnes[0,:,1],label='Intrados')  #Tracé de x_down et y_down
 plt.plot(coordonnes[1,:,0],coordonnes[1,:,1],label='Extrados')  #Tracé de x_upet y_up
